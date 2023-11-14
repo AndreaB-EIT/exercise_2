@@ -122,10 +122,6 @@ const AddItemToCategory = () => {
         }
     };
 
-    const resetForm = () => {
-        setSelectedCategory('');
-    }
-
     return (
         <div>
             <h2>Add Item to Category</h2>
