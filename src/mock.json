@@ -1,0 +1,64 @@
+{
+  "items": [
+    {
+      "name": "t-shirts",
+      "products": [
+        { "id": "tshirt_001", "name": "Adidas Slim Fit Cotton Casual Red Tee", "brand": "Adidas", "fit": "Slim", "material": "Cotton", "style": "Casual", "color": "Red", "price": "19.99" },
+        { "id": "tshirt_002", "name": "Puma Standard Fit Polyester Sporty Blue Tee", "brand": "Puma", "fit": "Standard", "material": "Polyester", "style": "Sporty", "color": "Blue", "price": "27.99" },
+        { "id": "tshirt_003", "name": "Nike Relaxed Fit Cotton Formal Green Tee", "brand": "Nike", "fit": "Relaxed", "material": "Cotton", "style": "Formal", "color": "Green", "price": "34.99" },
+        { "id": "tshirt_004", "name": "Adidas Standard Fit Polyester Casual Yellow Tee", "brand": "Adidas", "fit": "Standard", "material": "Polyester", "style": "Casual", "color": "Yellow", "price": "22.99" },
+        { "id": "tshirt_005", "name": "Puma Slim Fit Cotton Sporty Purple Tee", "brand": "Puma", "fit": "Slim", "material": "Cotton", "style": "Sporty", "color": "Purple", "price": "18.99" },
+        { "id": "tshirt_006", "name": "Nike Relaxed Fit Polyester Formal Orange Tee", "brand": "Nike", "fit": "Relaxed", "material": "Polyester", "style": "Formal", "color": "Orange", "price": "31.99" },
+        { "id": "tshirt_007", "name": "Adidas Standard Fit Cotton Casual Pink Tee", "brand": "Adidas", "fit": "Standard", "material": "Cotton", "style": "Casual", "color": "Pink", "price": "25.99" },
+        { "id": "tshirt_008", "name": "Puma Slim Fit Polyester Sporty Brown Tee", "brand": "Puma", "fit": "Slim", "material": "Polyester", "style": "Sporty", "color": "Brown", "price": "19.99" },
+        { "id": "tshirt_009", "name": "Nike Relaxed Fit Cotton Formal Gray Tee", "brand": "Nike", "fit": "Relaxed", "material": "Cotton", "style": "Formal", "color": "Grey", "price": "29.99" },
+        { "id": "tshirt_010", "name": "Adidas Standard Fit Polyester Casual Black Tee", "brand": "Adidas", "fit": "Standard", "material": "Polyester", "style": "Casual", "color": "Black", "price": "26.99" }
+      ]
+    },
+    {
+      "name": "shoes",
+      "products": [
+        { "id": "shoe_001", "name": "Adidas Leather Sneakers", "brand": "Adidas", "material": "Leather", "style": "Sneakers", "price": "49.99" },
+        { "id": "shoe_002", "name": "Puma Mesh Running Shoes", "brand": "Puma", "material": "Mesh", "style": "Running", "price": "32.99" },
+        { "id": "shoe_003", "name": "Nike Leather Formal Shoes", "brand": "Nike", "material": "Leather", "style": "Formal", "price": "59.99" },
+        { "id": "shoe_004", "name": "Adidas Mesh Sneakers", "brand": "Adidas", "material": "Mesh", "style": "Sneakers", "price": "45.99" },
+        { "id": "shoe_005", "name": "Puma Leather Running Shoes", "brand": "Puma", "material": "Leather", "style": "Running", "price": "39.99" },
+        { "id": "shoe_006", "name": "Nike Mesh Formal Shoes", "brand": "Nike", "material": "Mesh", "style": "Formal", "price": "54.99" },
+        { "id": "shoe_007", "name": "Adidas Leather Sneakers", "brand": "Adidas", "material": "Leather", "style": "Sneakers", "price": "47.99" },
+        { "id": "shoe_008", "name": "Puma Mesh Running Shoes", "brand": "Puma", "material": "Mesh", "style": "Running", "price": "36.99" },
+        { "id": "shoe_009", "name": "Nike Leather Formal Shoes", "brand": "Nike", "material": "Leather", "style": "Formal", "price": "58.99" },
+        { "id": "shoe_010", "name": "Adidas Mesh Sneakers", "brand": "Adidas", "material": "Mesh", "style": "Sneakers", "price": "42.99" }
+      ]
+    },
+    {
+      "name": "jeans",
+      "products": [
+        { "id": "jeans_001", "name": "Levi's Standard Fit Blue Distressed Jeans", "brand": "Levi's", "fit": "Standard", "size": "30", "color": "Blue", "wash_type": "Distressed", "price": "39.99" },
+        { "id": "jeans_002", "name": "Wrangler Standard Fit Black Regular Jeans", "brand": "Wrangler", "fit": "Standard", "size": "32", "color": "Black", "wash_type": "Regular", "price": "29.99" },
+        { "id": "jeans_003", "name": "Lee Cargo Fit Blue Distressed Jeans", "brand": "Lee", "fit": "Cargo", "size": "34", "color": "Blue", "wash_type": "Distressed", "price": "44.99" },
+        { "id": "jeans_004", "name": "Wrangler Standard Fit Black Regular Jeans", "brand": "Wrangler", "fit": "Standard", "size": "32", "color": "Black", "wash_type": "Regular", "price": "34.99" },
+        { "id": "jeans_005", "name": "Levi's Standard Fit Blue Distressed Jeans", "brand": "Levi's", "fit": "Standard", "size": "30", "color": "Blue", "wash_type": "Distressed", "price": "41.99" },
+        { "id": "jeans_006", "name": "Lee Cargo Fit Black Regular Jeans", "brand": "Lee", "fit": "Cargo", "size": "34", "color": "Black", "wash_type": "Regular", "price": "31.99" },
+        { "id": "jeans_007", "name": "Wrangler Standard Fit Blue Distressed Jeans", "brand": "Wrangler", "fit": "Standard", "size": "32", "color": "Blue", "wash_type": "Distressed", "price": "47.99" },
+        { "id": "jeans_008", "name": "Levi's Standard Fit Black Regular Jeans", "brand": "Levi's", "fit": "Standard", "size": "30", "color": "Black", "wash_type": "Regular", "price": "36.99" },
+        { "id": "jeans_009", "name": "Lee Cargo Fit Blue Distressed Jeans", "brand": "Lee", "fit": "Cargo", "size": "34", "color": "Blue", "wash_type": "Distressed", "price": "49.99" },
+        { "id": "jeans_010", "name": "Wrangler Standard Fit Grey Regular Jeans", "brand": "Wrangler", "fit": "Standard", "size": "32", "color": "Grey", "wash_type": "Regular", "price": "38.99" }
+      ]
+    },
+    {
+      "name": "watches",
+      "products": [
+        { "id": "watch_001", "name": "Rolex Automatic Elegant Watch", "brand": "Rolex", "winding": "Automatic", "collection": "Elegant", "price": "79.99" },
+        { "id": "watch_002", "name": "Casio Quartz Sports Watch", "brand": "Casio", "winding": "Quartz", "collection": "Sports", "price": "62.99" },
+        { "id": "watch_003", "name": "Tag Heuer Automatic Modern Watch", "brand": "Tag Heuer", "winding": "Automatic", "collection": "Modern", "price": "89.99" },
+        { "id": "watch_004", "name": "Seiko Quartz Classic Watch", "brand": "Seiko", "winding": "Quartz", "collection": "Classic", "price": "74.99" },
+        { "id": "watch_005", "name": "Fossil Automatic Casual Watch", "brand": "Fossil", "winding": "Automatic", "collection": "Casual", "price": "81.99" },
+        { "id": "watch_006", "name": "Citizen Quartz Fashion Watch", "brand": "Citizen", "winding": "Quartz", "collection": "Fashion", "price": "67.99" },
+        { "id": "watch_007", "name": "Omega Automatic Luxury Watch", "brand": "Omega", "winding": "Automatic", "collection": "Luxury", "price": "94.99" },
+        { "id": "watch_008", "name": "Bulova Quartz Vintage Watch", "brand": "Bulova", "winding": "Quartz", "collection": "Vintage", "price": "78.99" },
+        { "id": "watch_009", "name": "Tissot Automatic Elegant Watch", "brand": "Tissot", "winding": "Automatic", "collection": "Elegant", "price": "86.99" },
+        { "id": "watch_010", "name": "Citizen Quartz Sports Watch", "brand": "Citizen", "winding": "Quartz", "collection": "Sports", "price": "71.99" }
+      ]
+    }
+  ]
+}
