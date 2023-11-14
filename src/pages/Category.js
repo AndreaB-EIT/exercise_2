@@ -3,11 +3,12 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { Container, Row, Col } from 'reactstrap';
 import FiltersManager from '../components/FiltersManager';
-
-import data from '../mock.json';
 import ProductCard from '../components/ProductCard';
 
 const Category = () => {
+
+    const data = JSON.parse(localStorage.getItem('db'));
+
     const { id } = useParams();
     const [categoryData, setCategoryData] = useState(null);
     const [appliedFilters, setAppliedFilters] = useState({});
@@ -60,7 +61,6 @@ const Category = () => {
         });
     };
 
-
     const filterProducts = () => {
         // Filter the products based on the applied filters
         return products.filter(product =>
@@ -71,6 +71,10 @@ const Category = () => {
         );
     };
 
+    function capitalizeFirstLetter(string) {
+        return string.charAt(0).toUpperCase() + string.slice(1);
+    }
+
     return (
         <Container className="mt-3">
             <Row>
@@ -80,7 +84,7 @@ const Category = () => {
                 </Col>
                 <Col xs={12} md={9}>
                     {/* Main Content Section */}
-                    <h2>{name} Category</h2>
+                    <h2>{capitalizeFirstLetter(name)} category</h2>
                     {/* Display filtered products here */}
                     <Row>
                         {filterProducts().map((product) => (
