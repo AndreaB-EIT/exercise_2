@@ -1,6 +1,7 @@
 // components/Filter.js
-import React, { useState } from 'react';
-import { Input, Label, Row, Col, Button } from 'reactstrap';
+import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+import { Input, Label, Button } from 'reactstrap';
 
 const Filter = ({ title, values, onFilterChange }) => {
     const [selectedValue, setSelectedValue] = useState(null);
@@ -15,18 +16,23 @@ const Filter = ({ title, values, onFilterChange }) => {
         onFilterChange(title, null);
     };
 
+    const { id: categoryId } = useParams();
+    useEffect(() => {
+        setSelectedValue(null); // Reset selected value when the category changes
+    }, [categoryId]);
+
+    function capitalizeFirstLetter(string) {
+        return string.charAt(0).toUpperCase() + string.slice(1);
+    }
+
     return (
         <div className='filter'>
-            <Row className="mb-3">
-                <Col>
-                    <h4>{title}</h4>
-                </Col>
-                <Col className="text-right">
-                    <Button color="danger" outline onClick={handleReset}>
-                        Reset this filter
-                    </Button>
-                </Col>
-            </Row>
+            <div className="mb-3 filter-title">
+                <p>{capitalizeFirstLetter(title)}</p>
+                <Button color="danger" outline onClick={handleReset}>
+                    Reset filter
+                </Button>
+            </div>
             <ul className="list-unstyled">
                 {values.map((value) => (
                     <li key={value}>
@@ -39,7 +45,7 @@ const Filter = ({ title, values, onFilterChange }) => {
                             onChange={() => handleValueChange(value)}
                         />
                         <Label htmlFor={`filter_${title}_${value}`} className="radio-label">
-                            {value}
+                            {capitalizeFirstLetter(value)}
                         </Label>
                     </li>
                 ))}

@@ -1,31 +1,40 @@
 // src/pages/Category.js
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { Container, Row, Col } from 'reactstrap';
-import FiltersManager from '../components/FiltersManager';
+import { Container, Row, Col, Button, Collapse } from 'reactstrap';
+import Filter from '../components/Filter';
+
 import ProductCard from '../components/ProductCard';
 
 const Category = () => {
 
     const data = JSON.parse(localStorage.getItem('db'));
 
-    const { id } = useParams();
+    const { id: categoryId } = useParams();
     const [categoryData, setCategoryData] = useState(null);
     const [appliedFilters, setAppliedFilters] = useState({});
+    const [pageProducts, setPageProducts] = useState([]);
+    const [isFiltersManagerOpen, setIsFiltersManagerOpen] = useState(false);
 
     useEffect(() => {
-        // Simulate data fetch (replace with your actual data fetching logic)
-        const fetchData = async () => {
-            try {
-                setCategoryData(data);
-            } catch (error) {
-                console.error('Error fetching category data:', error);
-            }
-        };
+        // Simulating data fetch
+        try {
+            setCategoryData(data);
+        } catch (error) {
+            console.error('Error fetching category data:', error);
+        }
 
-        // Call the fetch function
-        fetchData();
-    }, []);
+        setAppliedFilters({});
+        setPageProducts([]);
+    }, [categoryId]);
+
+    useEffect(() => {
+        // Update the pageProducts when appliedFilters or categoryData changes
+        if (categoryData) {
+            const filteredProducts = filterProducts();
+            setPageProducts(filteredProducts);
+        }
+    }, [appliedFilters, categoryData]);
 
     if (!categoryData) {
         // Render a loading state while data is being fetched
@@ -33,10 +42,10 @@ const Category = () => {
     }
 
     // Find the category item based on the id
-    const selectedCategory = categoryData.items.find(item => item.name === id);
-    const { name, products } = selectedCategory;
+    const selectedCategory = categoryData.items.find(item => item.name === categoryId);
+    const { name: categoryName, products } = selectedCategory;
 
-    // Extract attributes dynamically from the first product, excluding "id"
+    // Extract attributes dynamically from the first product, excluding those not to be shown
     const excluded_attributes = ['id', 'name', 'price'];
     const attributes = Object.keys(products[0]).filter(attribute => !excluded_attributes.includes(attribute));
 
@@ -78,21 +87,44 @@ const Category = () => {
     return (
         <Container className="mt-3">
             <Row>
+
+                {/* Dynamic Filters Section */}
                 <Col xs={12} md={3}>
-                    {/* Dynamic Filters Section */}
-                    <FiltersManager filters={filters} onFilterChange={handleFilterChange} />
+                    <Button
+                        color="primary"
+                        onClick={() => setIsFiltersManagerOpen(!isFiltersManagerOpen)}
+                        className="d-block d-md-none mb-3"
+                    >
+                        {isFiltersManagerOpen ? 'Hide Filters' : 'Show Filters'}
+                    </Button>
+                    <Collapse isOpen={isFiltersManagerOpen} className="d-md-block">
+                        <div>
+                            {filters.map(({ title, values }) => (
+                                <Filter
+                                    key={`${title}_${categoryId}`} // This makes the component visually reset on category change
+                                    title={title}
+                                    values={values}
+                                    onFilterChange={handleFilterChange}
+                                />
+                            ))}
+
+                        </div>
+                    </Collapse>
                 </Col>
+
+                {/* Main Content Section */}
                 <Col xs={12} md={9}>
-                    {/* Main Content Section */}
-                    <h2>{capitalizeFirstLetter(name)} category</h2>
+                    <h2>Our {categoryName}</h2>
                     {/* Display filtered products here */}
                     <Row>
-                        {filterProducts().map((product) => (
+                        {pageProducts.length > 0 ? pageProducts.map((product) => (
                             // Adjust the column sizes for different screen sizes
                             <Col key={product.id} xs={12} sm={6} lg={4}>
                                 <ProductCard product={product} />
                             </Col>
-                        ))}
+                        )) : (
+                            <p>Sorry, there are no results. Try changing the filters you applied</p>
+                        )}
                     </Row>
                 </Col>
             </Row>

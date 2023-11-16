@@ -16,7 +16,7 @@ function App() {
     // to read and edit at will, since I didn't want to install extra packages (node and react already
     // have enough as is for even the simplest of tasks) to deal with file management nor setting up
     // a Firebase or MySQL database just for this simple task
-    if (localStorage.getItem('db') === '') {
+    if (!localStorage.getItem('db')) {
         localStorage.setItem('db', JSON.stringify(data));
     }
 
@@ -32,7 +32,7 @@ function App() {
                 <NavbarBrand tag={Link} to="/">
                     Categories
                 </NavbarBrand>
-                <NavbarToggler onClick={toggleNavbar} />
+                <NavbarToggler className="d-md-none" onClick={toggleNavbar} />
                 <Collapse isOpen={isOpen} navbar>
                     <Nav className="mr-auto" navbar>
                         <NavLink tag={Link} to={'/new-category/'}>
