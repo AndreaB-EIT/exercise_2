@@ -1,7 +1,7 @@
 // src/App.js
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
-import { Navbar, NavbarBrand, Container, NavLink, NavbarToggler, Collapse, Nav } from 'reactstrap';
+import { Navbar, NavbarBrand, Container, NavLink, NavbarToggler, Collapse, Nav, NavItem } from 'reactstrap';
 import Home from './pages/Home';
 import Category from './pages/Category';
 import NewCategory from './pages/NewCategory';
@@ -20,30 +20,68 @@ function App() {
         localStorage.setItem('db', JSON.stringify(data));
     }
 
+    const [categories, setCategories] = useState([]);
+
+    useEffect(() => {
+        setCategories(data.items.map(category => category.name));
+    }, []);
+
     const [isOpen, setIsOpen] = useState(false);
 
     const toggleNavbar = () => {
         setIsOpen(!isOpen);
     };
 
+    function capitalizeFirstLetter(string) {
+        return string.charAt(0).toUpperCase() + string.slice(1);
+    }
+
     return (
         <Router>
             <Navbar color="light" light expand="md">
                 <NavbarBrand tag={Link} to="/">
-                    Categories
+                    Home
                 </NavbarBrand>
-                <NavbarToggler className="d-md-none" onClick={toggleNavbar} />
+
+                <NavbarToggler onClick={toggleNavbar} />
+
                 <Collapse isOpen={isOpen} navbar>
-                    <Nav className="mr-auto" navbar>
-                        <NavLink tag={Link} to={'/new-category/'}>
-                            Add a category
-                        </NavLink>
-                        <NavLink tag={Link} to={'/add-item/'}>
-                            Add an item to a category
-                        </NavLink>
+                    <div className="d-md-none"><hr /></div>
+                    <div className="d-none d-md-block vr"></div>
+
+                    <Nav className="mr-auto" navbar onClick={toggleNavbar}>
+                        {categories.map((category, index) => (
+                            <NavItem key={index}>
+                                <NavLink tag={Link} to={`/category/${category.toLowerCase()}`}>
+                                    {capitalizeFirstLetter(category)}
+                                </NavLink>
+                            </NavItem>
+                        ))}
+
+                        <div className="d-md-none"><hr /></div>
+                        <div className="d-none d-md-block vr"></div>
+
+                        <NavItem>
+                            <NavLink tag={Link} to={'/new-category/'}>
+                                Add a category
+                            </NavLink>
+                        </NavItem>
+                        <NavItem>
+                            <NavLink tag={Link} to={'/add-item/'}>
+                                Add an item to a category
+                            </NavLink>
+                        </NavItem>
                     </Nav>
                 </Collapse>
-                {/* <NavbarToggler onClick={toggleNavbar} />
+            </Navbar>
+
+            {/* <Navbar color="light" light expand="md">
+                <NavbarBrand tag={Link} to="/">
+                    Categories
+                </NavbarBrand>
+
+                <NavbarToggler onClick={toggleNavbar} />
+
                 <Collapse isOpen={isOpen} navbar>
                     <Nav className="mr-auto" navbar>
                         {categories.map((category, index) => (
@@ -53,9 +91,19 @@ function App() {
                                 </NavLink>
                             </NavItem>
                         ))}
+                        <NavItem>
+                            <NavLink tag={Link} to={'/new-category/'}>
+                                Add a category
+                            </NavLink>
+                        </NavItem>
+                        <NavItem>
+                            <NavLink tag={Link} to={'/add-item/'}>
+                                Add an item to a category
+                            </NavLink>
+                        </NavItem>
                     </Nav>
-                </Collapse> */}
-            </Navbar>
+                </Collapse>
+            </Navbar> */}
 
             <Container className="mt-3">
                 <Routes>
