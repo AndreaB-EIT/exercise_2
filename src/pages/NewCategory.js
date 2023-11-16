@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Button, Form, FormGroup, Label, Input, Alert } from 'reactstrap';
 
-const NewCategory = () => {
+const NewCategory = ({ updateCategories }) => {
 
     const data = JSON.parse(localStorage.getItem('db'));
 
@@ -67,6 +67,8 @@ const NewCategory = () => {
 
                 data.items.push(newCategory);
                 localStorage.setItem('db', JSON.stringify(data));
+
+                updateCategories(newCategory.name);
 
                 console.log(`Category "${categoryName}" added successfully.`);
             }

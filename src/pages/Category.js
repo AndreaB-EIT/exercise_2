@@ -93,9 +93,9 @@ const Category = () => {
                     </Button>
                     <Collapse isOpen={isFiltersManagerOpen} className="d-md-block">
                         <div>
-                            {filters.map(({ title, values }) => (
+                            {filters.map(({ title, values, index }) => (
                                 <Filter
-                                    key={`${title}_${categoryId}`} // This makes the component visually reset on category change
+                                    key={`${title}_${categoryId}_${index}`} // This makes the component visually reset on category change
                                     title={title}
                                     values={values}
                                     onFilterChange={handleFilterChange}
