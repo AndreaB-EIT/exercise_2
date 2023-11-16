@@ -1,7 +1,8 @@
 // components/Filter.js
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { Input, Label, Button } from 'reactstrap';
+import { Input, Label, Button, Row, Col } from 'reactstrap';
+import { capitalizeFirstLetter } from '../utils/fe_utility_functions';
 
 const Filter = ({ title, values, onFilterChange }) => {
     const [selectedValue, setSelectedValue] = useState(null);
@@ -21,18 +22,16 @@ const Filter = ({ title, values, onFilterChange }) => {
         setSelectedValue(null); // Reset selected value when the category changes
     }, [categoryId]);
 
-    function capitalizeFirstLetter(string) {
-        return string.charAt(0).toUpperCase() + string.slice(1);
-    }
-
     return (
         <div className='filter'>
-            <div className="mb-3 filter-title">
-                <p>{capitalizeFirstLetter(title)}</p>
-                <Button color="danger" outline onClick={handleReset}>
-                    Reset filter
-                </Button>
-            </div>
+            <Row className="justify-content-between align-items-baseline mb-3">
+                <Col><p className='filter-title'>{capitalizeFirstLetter(title)}</p></Col>
+                <Col className='d-flex justify-content-end'>
+                    <Button color="danger" outline onClick={handleReset}>
+                        Reset filter
+                    </Button>
+                </Col>
+            </Row>
             <ul className="list-unstyled">
                 {values.map((value) => (
                     <li key={value}>

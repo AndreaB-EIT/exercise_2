@@ -7,6 +7,7 @@ import Category from './pages/Category';
 import NewCategory from './pages/NewCategory';
 import data from './mock.json';
 import AddItemToCategory from './pages/AddItemToCategory';
+import { capitalizeFirstLetter } from './utils/fe_utility_functions';
 
 function App() {
 
@@ -32,10 +33,6 @@ function App() {
     const toggleNavbar = () => {
         setIsOpen(!isOpen);
     };
-
-    function capitalizeFirstLetter(string) {
-        return string.charAt(0).toUpperCase() + string.slice(1);
-    }
 
     return (
         <Router>

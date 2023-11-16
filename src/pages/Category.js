@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 import { Container, Row, Col, Button, Collapse } from 'reactstrap';
 import Filter from '../components/Filter';
 import ProductCard from '../components/ProductCard';
+import ProductLine from '../components/ProductLine';
 
 const Category = () => {
 
@@ -14,6 +15,7 @@ const Category = () => {
     const [appliedFilters, setAppliedFilters] = useState({});
     const [pageProducts, setPageProducts] = useState([]);
     const [isFiltersManagerOpen, setIsFiltersManagerOpen] = useState(false);
+    const [isListView, setIsListView] = useState(false);
 
     useEffect(() => {
         // Simulating data fetch
@@ -78,6 +80,26 @@ const Category = () => {
         );
     };
 
+    const renderProduct = (product) => {
+        if (isListView) {
+            // Render list view
+            return (
+                <ProductLine key={product.id} product={product} />
+            );
+        } else {
+            // Render grid view
+            return (
+                <Col key={product.id} xs={12} sm={6} lg={4}>
+                    <ProductCard product={product} />
+                </Col>
+            );
+        }
+    };
+
+    const toggleView = () => {
+        setIsListView(!isListView);
+    };
+
     return (
         <Container className="mt-3">
             <Row>
@@ -108,15 +130,23 @@ const Category = () => {
 
                 {/* Main Content Section */}
                 <Col xs={12} md={9}>
-                    <h2>Our {categoryName}</h2>
-                    {/* Display filtered products here */}
+                    <Row className='justify-content-between align-items-baseline mb-3'>
+                        <Col xs={9}>
+                            <h2>Our {categoryName}</h2>
+                        </Col>
+                        <Col xs={3} className='d-flex justify-content-end'>
+                            {/* Toggle view buttons */}
+                            <div className="mt-3">
+                                <Button color="primary" onClick={toggleView}>
+                                    {isListView ? 'Switch to Grid View' : 'Switch to List View'}
+                                </Button>
+                            </div>
+                        </Col>
+                    </Row>
                     <Row>
-                        {pageProducts.length > 0 ? pageProducts.map((product) => (
-                            // Adjust the column sizes for different screen sizes
-                            <Col key={product.id} xs={12} sm={6} lg={4}>
-                                <ProductCard product={product} />
-                            </Col>
-                        )) : (
+                        {pageProducts.length > 0 ? (
+                            pageProducts.map((product) => renderProduct(product))
+                        ) : (
                             <p>Sorry, there are no results. Try changing the filters you applied</p>
                         )}
                     </Row>
