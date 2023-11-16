@@ -3,14 +3,13 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { Container, Row, Col, Button, Collapse } from 'reactstrap';
 import Filter from '../components/Filter';
-
 import ProductCard from '../components/ProductCard';
 
 const Category = () => {
 
     const data = JSON.parse(localStorage.getItem('db'));
-
     const { id: categoryId } = useParams();
+
     const [categoryData, setCategoryData] = useState(null);
     const [appliedFilters, setAppliedFilters] = useState({});
     const [pageProducts, setPageProducts] = useState([]);
@@ -31,8 +30,7 @@ const Category = () => {
     useEffect(() => {
         // Update the pageProducts when appliedFilters or categoryData changes
         if (categoryData) {
-            const filteredProducts = filterProducts();
-            setPageProducts(filteredProducts);
+            setPageProducts(filterProducts());
         }
     }, [appliedFilters, categoryData]);
 
@@ -79,10 +77,6 @@ const Category = () => {
             })
         );
     };
-
-    function capitalizeFirstLetter(string) {
-        return string.charAt(0).toUpperCase() + string.slice(1);
-    }
 
     return (
         <Container className="mt-3">
