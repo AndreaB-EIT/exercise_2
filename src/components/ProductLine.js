@@ -21,7 +21,7 @@ const ProductLine = ({ product }) => {
             <Col xs={10}>
                 {product.name && <h3>{product.name}</h3>}
                 {description && <p className="mb-1">{description}</p>}
-                {product.price && <p className="text-muted">{`${product.price} €`}</p>}
+                {product.price && <p style={{ fontSize: '1.25rem' }}>{`${product.price} €`}</p>}
             </Col>
             <hr className='mt-2'></hr>
         </Row>

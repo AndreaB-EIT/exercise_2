@@ -176,7 +176,7 @@ const NewCategory = ({ updateCategories }) => {
                             <p>None</p>
                         )}
                     </div>
-                    {!isIdAdded && <p>The "id" attribute will be added automatically if you don't add it</p>}
+                    {!isIdAdded && <div className='mb-3'><strong>The "id" attribute is added automatically with value (category name)_001 unless you add it and specify it however you want</strong></div>}
                     <FormGroup>
                         <Label for="attributeName">Attribute name</Label>
                         <Input
