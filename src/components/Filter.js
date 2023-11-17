@@ -27,7 +27,7 @@ const Filter = ({ title, values, onFilterChange }) => {
             <Row className="justify-content-between align-items-baseline mb-3">
                 <Col><p className='filter-title'>{capitalizeFirstLetter(title)}</p></Col>
                 <Col className='d-flex justify-content-end'>
-                    <Button color="danger" outline onClick={handleReset}>
+                    <Button size='sm' color="danger" outline onClick={handleReset}>
                         Reset filter
                     </Button>
                 </Col>

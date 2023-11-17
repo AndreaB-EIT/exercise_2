@@ -8,7 +8,7 @@ import ProductLine from '../components/ProductLine';
 
 const Category = () => {
 
-    const data = JSON.parse(localStorage.getItem('db'));
+    const data = JSON.parse(localStorage.getItem('db_exercise2'));
     const { id: categoryId } = useParams();
 
     const [categoryData, setCategoryData] = useState(null);
@@ -107,6 +107,8 @@ const Category = () => {
                 {/* Dynamic Filters Section */}
                 <Col xs={12} md={3}>
                     {filters.length > 0 && <Button
+                        block
+                        outline
                         color="primary"
                         onClick={() => setIsFiltersManagerOpen(!isFiltersManagerOpen)}
                         className="d-block d-md-none mb-3"
@@ -137,7 +139,7 @@ const Category = () => {
                         <Col xs={3} className='d-flex justify-content-end'>
                             {/* Toggle view buttons */}
                             <div className="mt-3">
-                                <Button color="primary" onClick={toggleView}>
+                                <Button size='sm' outline color="primary" onClick={toggleView}>
                                     {isListView ? 'Switch to Grid View' : 'Switch to List View'}
                                 </Button>
                             </div>

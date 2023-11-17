@@ -12,10 +12,10 @@ import { capitalizeFirstLetter } from './utils/fe_utility_functions';
 function App() {
 
     // This is of course just for the purpose of this exercise. I would not use localStorage as the main company database
-    if (!localStorage.getItem('db')) {
-        localStorage.setItem('db', JSON.stringify(data));
+    if (!localStorage.getItem('db_exercise2')) {
+        localStorage.setItem('db_exercise2', JSON.stringify(data));
     } else {
-        data = JSON.parse(localStorage.getItem('db'));
+        data = JSON.parse(localStorage.getItem('db_exercise2'));
     }
 
     const [categories, setCategories] = useState([]);
@@ -36,7 +36,7 @@ function App() {
 
     return (
         <Router>
-            <Navbar color="light" light expand="md">
+            <Navbar color="light" light expand="md" fixed='top'>
                 <NavbarBrand tag={Link} to="/">
                     Home
                 </NavbarBrand>
@@ -73,7 +73,7 @@ function App() {
                 </Collapse>
             </Navbar>
 
-            <Container className="mt-3">
+            <Container style={{ marginTop: '4rem' }}>
                 <Routes>
                     <Route path="/" element={<Home />} />
                     <Route path="/category/:id" element={<Category />} />

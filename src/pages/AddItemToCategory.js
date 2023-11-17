@@ -12,7 +12,7 @@ const AddItemToCategory = () => {
     });
     const [previousItem, setPreviousItem] = useState(null);
 
-    const data = JSON.parse(localStorage.getItem('db'));
+    const data = JSON.parse(localStorage.getItem('db_exercise2'));
 
     useEffect(() => {
         if (data && data.items) {
@@ -81,7 +81,7 @@ const AddItemToCategory = () => {
         setPreviousItem({ category: selectedCategory, attributes: itemAttributes });
 
         data.items.find(category => category.name === selectedCategory).products.push(itemAttributes);
-        localStorage.setItem('db', JSON.stringify(data));
+        localStorage.setItem('db_exercise2', JSON.stringify(data));
 
         // Reset error and form fields
         setFeedback({
@@ -98,7 +98,7 @@ const AddItemToCategory = () => {
             setItemAttributes(previousItem.attributes);
 
             // Remove the last added item from the data object
-            const updatedData = JSON.parse(localStorage.getItem('db'));
+            const updatedData = JSON.parse(localStorage.getItem('db_exercise2'));
             const categoryIndex = updatedData.items.findIndex(
                 (category) => category.name === previousItem.category
             );
@@ -110,7 +110,7 @@ const AddItemToCategory = () => {
 
                 if (lastAddedItemIndex !== -1) {
                     updatedData.items[categoryIndex].products.splice(lastAddedItemIndex, 1);
-                    localStorage.setItem('db', JSON.stringify(updatedData));
+                    localStorage.setItem('db_exercise2', JSON.stringify(updatedData));
                 }
             }
 
@@ -182,11 +182,11 @@ const AddItemToCategory = () => {
                         ))}
                         {feedback.status && <Alert className='mb-2' color={feedback.status}>{feedback.message}</Alert>}
                         {feedback.status === 'success' ? (
-                            <Button color="danger" onClick={handleUndo}>
+                            <Button block color="danger" onClick={handleUndo}>
                                 Undo
                             </Button>
                         ) : (
-                            <Button color="primary" onClick={handleSaveItem}>
+                            <Button block color="primary" onClick={handleSaveItem}>
                                 Save item
                             </Button>
                         )}

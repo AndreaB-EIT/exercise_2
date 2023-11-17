@@ -3,7 +3,7 @@ import { Button, Form, FormGroup, Label, Input, Alert, Row, Col } from 'reactstr
 
 const NewCategory = ({ updateCategories }) => {
 
-    const data = JSON.parse(localStorage.getItem('db'));
+    const data = JSON.parse(localStorage.getItem('db_exercise2'));
 
     const [categoryName, setCategoryName] = useState('');
     const [startingItems, setStartingItems] = useState([]);
@@ -102,21 +102,20 @@ const NewCategory = ({ updateCategories }) => {
                     ? [{ 'id': `${categoryName}_001` }, ...startingItems]
                     : startingItems;
 
+                const firstProduct = newArrayWithId.reduce((result, item) => {
+                    const [key] = Object.keys(item);
+                    const value = item[key];
+                    result[key] = value;
+                    return result;
+                }, {});
+
                 const newCategory = {
                     name: categoryName,
-                    products: newArrayWithId,
+                    products: [firstProduct],
                 };
 
-                // if (!startingItems.some(item => Object.keys(item).includes('id'))) {
-                //     setStartingItems((prevItems) => [{ 'id': `${categoryName}_001` }, ...prevItems]);
-                // }
-                // const newCategory = {
-                //     name: categoryName,
-                //     products: startingItems,
-                // };
-
                 data.items.push(newCategory);
-                localStorage.setItem('db', JSON.stringify(data));
+                localStorage.setItem('db_exercise2', JSON.stringify(data));
 
                 updateCategories(newCategory.name);
 
@@ -148,10 +147,10 @@ const NewCategory = ({ updateCategories }) => {
                     <p className='mb-1'>Attributes added so far:</p>
                     <div>
                         {startingItems.length > 0 ? (startingItems.map((item, index) => (
-                            <Row key={index}>
+                            <Row key={index} className='justify-content-between'>
                                 {Object.keys(item).map(key => (
                                     <>
-                                        <Col xs={9}>
+                                        <Col>
                                             <li
                                                 className='p-1 mb-2'
                                                 key={`${index}-${key}`}
@@ -160,8 +159,10 @@ const NewCategory = ({ updateCategories }) => {
                                                 {key}: {item[key]}
                                             </li>
                                         </Col>
-                                        <Col xs={3}>
+                                        <Col className='d-flex justify-content-end align-items-center'>
                                             <Button
+                                                outline
+                                                size='sm'
                                                 color='danger'
                                                 onClick={() => handleDeleteAttribute(index, key)}
                                             >
@@ -196,11 +197,11 @@ const NewCategory = ({ updateCategories }) => {
                         {startingItemAttributeFeedback.status && <Alert className='mt-2' color={startingItemAttributeFeedback.status}>{startingItemAttributeFeedback.message}</Alert>}
                     </FormGroup>
                     <Button color="primary" onClick={handleAddAttribute}>
-                        Add Attribute
+                        Add attribute
                     </Button>
                 </FormGroup>
-                <Button color="success" onClick={handleSaveCategory}>
-                    Save Category
+                <Button block className='mt-3' color="success" onClick={handleSaveCategory}>
+                    Save new category
                 </Button>
             </Form>
         </div>

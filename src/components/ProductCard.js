@@ -18,9 +18,9 @@ const ProductCard = ({ product }) => {
             {/* You can use a placeholder image or fetch an actual image */}
             <CardImg top width="100%" src={`https://via.placeholder.com/300x200/${colorToHex(product.color ?? 'black')}`} alt={`${product.name ?? 'Item'}`} />
             <CardBody>
-                {product.name && <CardTitle tag="h5">{product.name}</CardTitle>}
-                {description && <CardSubtitle tag="h6" className="mb-2 text-muted">{`${description}`}</CardSubtitle>}
-                {product.price && <CardText>{`${product.price} €`}</CardText>}
+                {product.name && <CardTitle tag="h5" className='mb-3'>{product.name}</CardTitle>}
+                {description && <CardSubtitle tag="h6" className="mb-3 text-muted">{`${description}`}</CardSubtitle>}
+                {product.price && <CardText tag="h5">{`${product.price} €`}</CardText>}
                 {/* <Button color="primary">Add to cart</Button> */}
             </CardBody>
         </Card>
