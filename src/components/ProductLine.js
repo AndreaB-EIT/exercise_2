@@ -1,4 +1,3 @@
-// ProductLine.js
 import React from 'react';
 import { Row, Col } from 'reactstrap';
 import { colorToHex } from '../utils/fe_utility_functions';

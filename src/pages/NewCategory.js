@@ -97,7 +97,7 @@ const NewCategory = ({ updateCategories }) => {
                     message: `The category "${categoryName}" has been successfully added to the database`
                 });
 
-                // Create a new array with the "id" attribute and other attributes
+                // Create a new array with the "id" attribute and all other inserted attributes
                 const newArrayWithId = !startingItems.some(item => Object.keys(item).includes('id'))
                     ? [{ 'id': `${categoryName}_001` }, ...startingItems]
                     : startingItems;

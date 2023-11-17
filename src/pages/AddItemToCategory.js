@@ -190,7 +190,6 @@ const AddItemToCategory = () => {
                                 Save item
                             </Button>
                         )}
-                        {/* TODO Undo button? */}
                     </>
                 )}
             </Form>

@@ -1,4 +1,3 @@
-// src/pages/Category.js
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { Container, Row, Col, Button, Collapse } from 'reactstrap';

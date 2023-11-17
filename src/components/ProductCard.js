@@ -15,7 +15,6 @@ const ProductCard = ({ product }) => {
 
     return (
         <Card className="mb-4">
-            {/* You can use a placeholder image or fetch an actual image */}
             <CardImg top width="100%" src={`https://via.placeholder.com/300x200/${colorToHex(product.color ?? 'black')}`} alt={`${product.name ?? 'Item'}`} />
             <CardBody>
                 {product.name && <CardTitle tag="h5" className='mb-3'>{product.name}</CardTitle>}
