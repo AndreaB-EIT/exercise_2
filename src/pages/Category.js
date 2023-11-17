@@ -106,13 +106,13 @@ const Category = () => {
 
                 {/* Dynamic Filters Section */}
                 <Col xs={12} md={3}>
-                    <Button
+                    {filters.length > 0 && <Button
                         color="primary"
                         onClick={() => setIsFiltersManagerOpen(!isFiltersManagerOpen)}
                         className="d-block d-md-none mb-3"
                     >
                         {isFiltersManagerOpen ? 'Hide Filters' : 'Show Filters'}
-                    </Button>
+                    </Button>}
                     <Collapse isOpen={isFiltersManagerOpen} className="d-md-block">
                         <div>
                             {filters.map(({ title, values, index }) => (
